@@ -19,16 +19,17 @@ namespace WinFormDemo
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if(this.txtName.Text !="")
+            
+            if(this.txtName.Text !="" )//&& txtName.Text != listBox1.Items.Contains(txtName))
             {
                 listBox1.Items.Add(this.txtName.Text);
-                
+                this.txtName.Focus();
                 this.txtName.Clear();
 
             }
             else
             {
-                MessageBox.Show("Please enter name to add","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Please enter Name to Add","Message",MessageBoxButtons.OK,MessageBoxIcon.Error);
                
             }
             
@@ -37,10 +38,16 @@ namespace WinFormDemo
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if(txtName.Text !="")
+            {
+                listBox1.Items.Remove(this.txtName.Text);
+                this.txtName.Clear();
+                this.txtName.Focus();
+            }
             if(this.listBox1.SelectedIndex>=0)
             {
                 this.listBox1.Items.RemoveAt(this.listBox1.SelectedIndex);
-                
+                this.txtName.Focus();
             }
         }
 
